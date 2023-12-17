@@ -104,7 +104,7 @@ export default class ImageGallery extends Component {
                     />}
                 </ul>
    
-                { searchResult.length > 0 && <Button onClick={this.hendleClickOnBtnLoadeMore} />}
+                { searchResult.length > 0 && !loading &&<Button onClick={this.hendleClickOnBtnLoadeMore} />}
 
             </>
         )
