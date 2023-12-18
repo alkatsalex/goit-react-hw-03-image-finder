@@ -1,47 +1,44 @@
-import { Component } from "react";
-import Searchbar from "./Searchbar/Searchbar.jsx"
-import ImageGallery from "./ImageGallery/ImageGallery.jsx"
-import Modal from "./Modal/Modal.jsx";
+import { Component } from 'react';
+import Searchbar from './Searchbar/Searchbar.jsx';
+import ImageGallery from './ImageGallery/ImageGallery.jsx';
+import Modal from './Modal/Modal.jsx';
 
 export class App extends Component {
-
   state = {
-    searchTag: "",
+    searchTag: '',
     isOpen: false,
-    modalImg: "",
-  }
-
+    modalImg: '',
+  };
 
   hendleFormSubmit = tag => {
     this.setState({
-      searchTag: tag
-    })
-  }
-
+      searchTag: tag,
+    });
+  };
 
   handleImageClick = imageUrl => {
     this.setState({ modalImg: imageUrl, isOpen: true });
-  }
+  };
 
-  handleCloseModal = (e) => {
+  handleCloseModal = e => {
     this.setState({ isOpen: false, modalImg: '' });
   };
 
-
-  
-
-
   render() {
-    const { isOpen, searchTag, caunter, modalImg,} = this.state
+    const { isOpen, searchTag, caunter, modalImg } = this.state;
     return (
-    <div>
+      <div>
         <Searchbar onSubmit={this.hendleFormSubmit} />
-        {<ImageGallery searchTag={searchTag} page={caunter} onClick={this.handleImageClick} loader={this.handleLoader} />}
+        {
+          <ImageGallery
+            searchTag={searchTag}
+            page={caunter}
+            onClick={this.handleImageClick}
+            loader={this.handleLoader}
+          />
+        }
         {isOpen && <Modal url={modalImg} onClose={this.handleCloseModal} />}
-        
-    </div>
-  );
+      </div>
+    );
   }
-
-  
-};
+}

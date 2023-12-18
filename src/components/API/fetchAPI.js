@@ -16,12 +16,6 @@ async function fetchAPI(searchQuery, page = 1) {
   try {
     const response = await axios(`${URL}`, { params });
     const data = await response.data;
-    // const fetchedImages = data.hits.map(el => ({
-    //   id: el.id,
-    //   webformatURL: el.webformatURL,
-    //   largeImageURL: el.largeImageURL,
-    // }));
-
     return data;
   } catch (error) {
     throw error;

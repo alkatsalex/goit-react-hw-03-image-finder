@@ -1,9 +1,6 @@
-import { Component } from "react";
+import { Component } from 'react';
 
 export default class Modal extends Component {
-
-
-
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
   }
@@ -22,19 +19,21 @@ export default class Modal extends Component {
     e.stopPropagation();
   };
 
-
   render() {
-    const url = this.props.url
-    const onClose =this.props.onClose
+    const url = this.props.url;
+    const onClose = this.props.onClose;
 
-
-
-      return (
-        <div className="Overlay" onClick={() => {onClose()}}>
-          <div className="Modal">
-            <img src={url} alt="" />
-          </div>
+    return (
+      <div
+        className="Overlay"
+        onClick={() => {
+          onClose();
+        }}
+      >
+        <div className="Modal">
+          <img src={url} alt="" onClick={this.handleImageClick} />
         </div>
-    )
-    }
+      </div>
+    );
+  }
 }
